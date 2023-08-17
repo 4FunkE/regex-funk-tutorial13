@@ -1,6 +1,6 @@
 # Exploring Regex with Funk: Tackling the "HTML Tag Matcher" Regular Expression
 
-Welcome to Funk's regex tutorial, using FunkE learning! As aspiring web developer, you're no stranger to the world of HTML tags. In this comprehensive tutorial, we'll dive into the complexities of a regular expression (regex) tailored to match and dissect HTML tags. Regex is a powerful tools for pattern matching and validation. By the end of this tutorial, you'll have a comprehensive understanding of how this regex works and be well-prepared to implement it in your coding adventures.
+Welcome to Funk's regex tutorial, using FunkE learning! As aspiring web developer, you're no stranger to the world of HTML tags. In this comprehensive tutorial, we'll dive into the complexities of a regular expression (regex) tailored to match and dissect HTML tags. Regex is a powerful tools using a sequence of characters that defines a search pattern for text, using pattern matching and validation. Regex follows "literal characters" or "Meta-characters." By the end of this tutorial, you'll have a comprehensive understanding of how this regex works and be well-prepared to implement it in your coding adventures.
 
 ## Summary
 
@@ -23,18 +23,18 @@ In this tutorial, we will unravel and understand the regular expression `/^<([a-
 - [Lookahead and Lookbehind](#lookahead-and-lookbehind)
 - [Author](#author)
 
-Anchors `^` and `$`
-Character Classes `[a-zA-Z0-9._%+-]`
-The `+` Quantifier
-Literal Character `@`
-Domain Validation `[a-zA-Z0-9.-]`
-Period `.` as a Metacharacter
-Top-Level Domain `[a-zA-Z]{2,}`
-Putting It All Together
-About the Author
+- Anchors `^` and `$`
+- The `+` Quantifier
+- Literal Character `@`(literal search of specific parameters)
+-, 
+- Period `.` as a Metacharacter (vague/generic search with same parameters) there are sudlte difference between each program being used
+any digit = \d : means any digit 0-9
+. = any character
+* = quantifier, 0 or more 
+.* = wildcard match a literal with any number of any characters
+- Putting It All Together
 
 ## Regex Components
-
 ### Anchors `^` and `$` <a name="anchors"></a>
 The journey begins with a close look at ^ and $, the anchors that mark the start and end of the line. These anchors ensure our regex applies to the entire line, which is vital when handling HTML tags.
 
@@ -56,8 +56,13 @@ Quantifiers like +, *, and ? provide flexibility in matching patterns. We'll div
 ### Character Escapes
 
 ### Backreferences
+Explore how backreferences like \1, \2, etc., are used to match previously captured groups and maintain consistency within HTML tags.
+
 ### Non-Capturing Groups
+Learn about non-capturing groups (?:...) and how they provide a way to group elements without capturing them as separate groups, which can be particularly useful when dealing with complex regex patterns.
+
 ### Lookahead and Lookbehind
+Delve into lookahead (?=...) and lookbehind (?<=...) assertions. These constructs allow you to assert whether a certain pattern exists ahead or behind the current position without consuming characters, enabling more sophisticated matching strategies.
 
 ## Author
 This tutorial was crafted by Emily Funk (FunkE), a beginner coder on a journey to strengthen her abilities in code. Funke hopes to have helped you decipher and leverage the "HTML Tag Matcher" regex for your web development endeavors.If you have any questions or need further assistance, feel free to reach out to FunkE through her [GitHub profile](https://github.com/4FunkE) or via email at 4funkecodes@gmail.com. I'm here to help and support you in any way I can. Have a FunkE day!
