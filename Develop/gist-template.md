@@ -24,14 +24,29 @@ In this tutorial, we will unravel and understand the regular expression `/^<([a-
 - [Author](#author)
 
 - Anchors `^` and `$`
+
 - The `+` Quantifier
+
+- position 
+
 - Literal Character `@`(literal search of specific parameters)
--, 
-- Period `.` as a Metacharacter (vague/generic search with same parameters) there are sudlte difference between each program being used
-any digit = \d : means any digit 0-9
-. = any character
+-, a, 1, !, @, #, $, %, 
+
+- Period `.` as a Metacharacter (vague/generic search with same parameters) there are sudlte difference between each program being used. types of meta are single quantify and position.
+\d : means any digit 0-9 single characters
+\w = A-Z,a-z,0-9 characters single characters w stands for word
+\s = whitespace single characters
+. = any character single characters
 * = quantifier, 0 or more 
++ = quantifier 1 or more
+? = quantifier 0 or 1
+{min,max}
+{n}- ad an interger of characters
 .* = wildcard match a literal with any number of any characters
+^ = beginning
+$ = end
+\b = word boundary
+
 - Putting It All Together
 
 ## Regex Components
