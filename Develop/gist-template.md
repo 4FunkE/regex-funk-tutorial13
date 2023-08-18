@@ -19,7 +19,7 @@ In this tutorial, we will dissect and comprehend the regular expression `/^<([a-
 - [Character Escapes](#character-escapes)
 - [Backreferences](#backreferences)
 - [Non-Capturing Groups](#non-capturing-groups)
-- [Lookahead and Lookbehind](#lookahead-and-lookbehind)
+- [Put it all together](#put-it-all-together)
 - [Author](#author)
 
 ## Regex Components
@@ -189,19 +189,51 @@ By utilizing backreferences, you're essentially saying "match what you've seen b
 Understanding how to employ backreferences empowers you to create more dynamic and accurate regex patterns, especially in scenarios where you need to match recurring patterns with precision.
 
 ### Non-Capturing Groups
-Learn about non-capturing groups (?:...) and how they provide a way to group elements without capturing them as separate groups, which can be particularly useful when dealing with complex regex patterns.
+`(?:...)` group elements without capturing them as separate groups, which can be particularly useful when dealing with complex regex patterns. This feature proves incredibly handy when you're grappling with intricate regex patterns, allowing you to maintain structure without complicating the capturing process.
 
-explain in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+Demonstrated within the `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/` We can look at this code snippet `(.*)<\/\1>|\s+\/>)` from the HTML tag regex pattern for non-capturing groups:
+
+- `(?:>(.*)<\/\1>|\s+\/>)`: Within this part of the pattern, the non-capturing group `(?: ... )` becomes a pivotal asset, accommodating two distinct alternatives split by the OR operator `|`.
+  - `>(.*)<\/\1>`: The first alternative encapsulates content between opening and closing tags, with `.*` matching any characters enclosed. Remarkably, `\1` acts as a backreference to the initial capturing group, ensuring a seamless match between opening and closing tags.
+  - `\s+\/>`: The second alternative seizes whitespace followed by a forward slash `/>`, an ideal match for self-closing tags.
 
 ### Put it all together
 > WARNING
-> The answer of our regex code apears below, dont read on until you have had a chance to decode it yourself.
+> The answer of our regex code appears below, don't read on until you have had a chance to decode it yourself.
+
+## `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
+This regex is designed to match and dissect HTML tags, ensuring they are well-formed. Here's a breakdown of the components and their functionalities:
+1. `^`: Anchors the pattern to the beginning of a line.
+2. `<`: Matches the literal character "<".
+3. `([a-z]+)`: Capturing group 1 that matches one or more lowercase letters, representing the tag name.
+4. `([^<]+)*`: Capturing group 2 that matches zero or more sequences of characters that are not "<". This section captures attribute values or content between opening and closing tags.
+5. `(?:>(.*)<\/\1>|\s+\/>)`: A non-capturing group that contains two alternatives separated by the OR operator |.
+    - `>(.*)<\/\1>`: Capturing group 3 within the first alternative captures content between opening and closing tags. \1 backreferences the tag name to ensure matching opening and closing tags.
+    - `\s+\/>`: The second alternative matches whitespace followed by a forward slash, matching self-closing tags.
+6. `$`: Anchors the pattern to the end of a line.
+
+In summary, this regex checks whether a line represents a complete HTML tag. It captures the tag name, attributes or content, and handles both normal and self-closing tags. The backreference \1 ensures that the opening and closing tags match appropriately.
+## Examples of `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
+- Normal Opening and Closing Tag:
+  - `<div>`This is a div`</div>`
+- Self-Closing Tag:
+  - `<img src="image.jpg" alt="An image"/>`
+- Opening Tag with Attributes and Content:
+  - `<a href="https://www.example.com">Visit Example</a>`
+- Self-Closing Tag with Whitespace:
+  - `<br />`
+- Nested Tags:
+  - `<div><p>`This is a paragraph`</p></div>`
+- Tag with Multiple Attributes and Content:
+  - `<input type="text" id="username" class="input-field" placeholder="Enter username" />`
+
+These examples showcase various scenarios where the provided regex pattern effectively matches different types of HTML tags, capturing their tag names, attributes, and content in line with the specified parameters.
 
 ### Resources 
 
-[MDN Web Docs for Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions )
-[Regular Expression Tutorial](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial)
-[Eloquent JavaScript (Chapter 09)](https://eloquentjavascript.net/09_regexp.html) 
+1. [MDN Web Docs for Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions )
+2. [Regular Expression Tutorial](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial)
+3. [Eloquent JavaScript (Chapter 09)](https://eloquentjavascript.net/09_regexp.html) 
 
 ## Author
 This tutorial was crafted by Emily Funk (FunkE), a beginner coder on a journey to strengthen her abilities in code. Funke hopes to have helped you decipher and leverage the "HTML Tag Matcher" regex for your web development endeavors.If you have any questions or need further assistance, feel free to reach out to FunkE through her [GitHub profile](https://github.com/4FunkE) or via email at 4funkecodes@gmail.com. I'm here to help and support you in any way I can. Have a FunkE day!
