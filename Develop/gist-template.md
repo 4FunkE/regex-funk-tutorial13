@@ -134,11 +134,17 @@ However,
 - Tag name: `<div>` does not match the pattern `[a-z]+` because it contains characters that are `<`, specifically the characters d, i, and v. The pattern `[^<]+` is designed to match any sequence of characters that do not include the less-than symbol `<`. It's often used to capture content between tags or within attribute values where the less-than symbol is not allowed.
 
 ### Grouping Constructs
-The primary way you group a section of a regex is by using parentheses (()). Each section within parentheses is known as a subexpression.
+Grouping constructs in regular expressions serve to encapsulate and organize parts of the pattern. The primary way to group a section of a regex is by using parentheses `()` which creates a subexpression. Subexpressions allow you to treat multiple characters or elements as a single unit and apply quantifiers or other operations to them.
+
+Let's take an example from the HTML tag regex and break down the grouping constructs:
+```bash
+/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+```
+- `([a-z]+):` This is a subexpression enclosed within parentheses. It captures and groups one or more lowercase letters, which represent the tag name.
+- `([^<]+)*:` Another subexpression capturing one or more characters that are not `<`. The `*` quantifier outside the parentheses repeats this subexpression zero or more times, allowing for attributes or content between the opening tag and closing tag.
+- `(?:>(.*)<\/\1>|\s+\/>):` This is a non-capturing group, indicated by `(?:...)`, which means it's used for grouping purposes but doesn't create a numbered capturing group. It includes two alternative subexpressions separated by `|`. The first part `>(.*)<\/\1>` captures the content between opening and closing tags, while the second part `\s+\/>` captures self-closing tags.
 
 In between the subexpressions, we have a colon (:).
-
-explain examples in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
 
 ### Character Classes
 `\d` : means any digit 0-9 single characters
