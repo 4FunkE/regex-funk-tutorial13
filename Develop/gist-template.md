@@ -161,9 +161,9 @@ These character classes can be seen in our example HTML tag regex `/^<([a-z]+)([
 - `.`: The period `.` in `(?:>(.*)<\/\1>|\s+\/>)` matches any single character except for a newline.
 
 ### The OR Operator
-Using the OR operator (|), the expression [abc] could be written as (a|b|c).
+Using the OR operator `|`, the expression [abc] could be written as (a|b|c).
 
-examples in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+Examples in `(?:>(.*)<\/\1>|\s+\/>)` as explained above It includes two alternative subexpressions separated by `|`. The first part `>(.*)<\/\1>` captures the content between opening and closing tags, while the second part `\s+\/>` captures self-closing tags.
 
 ### Flags
 We started this tutorial by explaining that as a literal, a regex must be wrapped in slash characters. The one exception to this rule is with the component known as flags. Flags are placed at the end of a regex, after the second slash, and they define additional functionality or limits for the regex.the six optioanl flags are as listed below:
