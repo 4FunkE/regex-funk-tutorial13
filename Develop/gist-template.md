@@ -138,14 +138,20 @@ The primary way you group a section of a regex is by using parentheses (()). Eac
 
 In between the subexpressions, we have a colon (:).
 
+explain examples in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+
 ### Character Classes
 `\d` : means any digit 0-9 single characters
 `\w` = A-Z,a-z,0-9 characters single characters w stands for word
 `\s` = whitespace single characters
 `.` = any character single characters
 
+examples from /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+
 ### The OR Operator
 Using the OR operator (|), the expression [abc] could be written as (a|b|c).
+
+examples in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
 
 ### Flags
 We started this tutorial by explaining that as a literal, a regex must be wrapped in slash characters. The one exception to this rule is with the component known as flags. Flags are placed at the end of a regex, after the second slash, and they define additional functionality or limits for the regex.the six optioanl flags are as listed below:
@@ -156,21 +162,26 @@ We started this tutorial by explaining that as a literal, a regex must be wrappe
 ### Character Escapes
 The backslash (\) in a regex escapes a character that otherwise would be interpreted literally. For example, the open curly brace ({) is used to begin a quantifier, but adding a backslash before the open curly brace (\{) means that the regex should look for the open curly brace character instead of beginning to define a quantifier. This is common when looking for strings with special characters that are the same as a particular component of a regex.
 
+examples in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+
 ### Backreferences
 Explore how backreferences like \1, \2, etc., are used to match previously captured groups and maintain consistency within HTML tags.
 
+explai in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+
 ### Non-Capturing Groups
 Learn about non-capturing groups (?:...) and how they provide a way to group elements without capturing them as separate groups, which can be particularly useful when dealing with complex regex patterns.
+
+explain in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
 
 ### Lookahead and Lookbehind
 Delve into lookahead (?=...) and lookbehind (?<=...) assertions. These constructs allow you to assert whether a certain pattern exists ahead or behind the current position without consuming characters, enabling more sophisticated matching strategies.
 
 ### Resources 
 
-MDN Web Docs for Regular Expressions https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions 
-Regular Expression Tutorial https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial
-Eloquent JavaScript (Chapter 09): Regular Expressions https://eloquentjavascript.net/09_regexp.html 
-
+[MDN Web Docs for Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions )
+[Regular Expression Tutorial](https://coding-boot-camp.github.io/full-stack/computer-science/regex-tutorial)
+[Eloquent JavaScript (Chapter 09)](https://eloquentjavascript.net/09_regexp.html) 
 
 ## Author
 This tutorial was crafted by Emily Funk (FunkE), a beginner coder on a journey to strengthen her abilities in code. Funke hopes to have helped you decipher and leverage the "HTML Tag Matcher" regex for your web development endeavors.If you have any questions or need further assistance, feel free to reach out to FunkE through her [GitHub profile](https://github.com/4FunkE) or via email at 4funkecodes@gmail.com. I'm here to help and support you in any way I can. Have a FunkE day!
