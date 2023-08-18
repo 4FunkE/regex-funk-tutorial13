@@ -147,12 +147,18 @@ Let's take an example from the HTML tag regex and break down the grouping constr
 In between the subexpressions, we have a colon (:).
 
 ### Character Classes
-`\d` : means any digit 0-9 single characters
-`\w` = A-Z,a-z,0-9 characters single characters w stands for word
-`\s` = whitespace single characters
-`.` = any character single characters
+Character classes provide a way to match specific types of characters within a regex pattern. Let's explore a few common character classes:
+- `\d` : means any digit 0-9 single characters
+- `\w` = A-Z,a-z,0-9 characters single characters w stands for word
+- `\s` = whitespace single characters
+- `.` = any character single characters
 
-examples from /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+These character classes can be seen in our example HTML tag regex `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
+
+- `[a-z]+`: This uses the character class `[a-z]` to match any lowercase letter one or more times.
+- `[^<]+`: Here, `[^<]` is a character class that matches any character that is not a `<`. The `+` quantifier means one or more times.
+- `\s+`: The `\s` character class matches whitespace characters, and the `+` quantifier means one or more times.
+- `.`: The period `.` in `(?:>(.*)<\/\1>|\s+\/>)` matches any single character except for a newline.
 
 ### The OR Operator
 Using the OR operator (|), the expression [abc] could be written as (a|b|c).
