@@ -172,22 +172,30 @@ We started this tutorial by explaining that as a literal, a regex must be wrappe
 - m—Multi-line search: a multi-line input string should be treated as multiple lines
 
 ### Character Escapes
-The backslash (\) in a regex escapes a character that otherwise would be interpreted literally. For example, the open curly brace ({) is used to begin a quantifier, but adding a backslash before the open curly brace (\{) means that the regex should look for the open curly brace character instead of beginning to define a quantifier. This is common when looking for strings with special characters that are the same as a particular component of a regex.
+In regular expressions, the backslash (\) serves as an escape character, allowing you to use special characters literally instead of their typical regex interpretation. This is particularly useful when you need to match specific characters that coincide with regex metacharacters or components.
 
-examples in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+Example from `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/`
+Let's break down the example `(.*)<\/\1>|\s+\/>)` from the HTML tag regex:
+
+- `<\/\1>`: In this part of the pattern, `\/` matches a literal forward slash character. However, `<\/\1>` uses the `\` character escape before the forward slash to ensure it's treated as a literal character and not the closing delimiter of the regex. The `\1` is a backreference to the first capturing group `([a-z]+)`, making sure the closing tag matches the opening tag, we will dive deeper into backreference next.
 
 ### Backreferences
-Explore how backreferences like \1, \2, etc., are used to match previously captured groups and maintain consistency within HTML tags.
+Backreferences, such as \1, \2, and so on, allow you to refer back to previously captured groups in a regex pattern. They provide a powerful way to match repeating patterns and maintain consistency within the content you're searching for.
 
-explai in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
+Example from `/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/` using the `(.*)<\/\1>|\s+\/>)` snippet like above.
+
+By utilizing backreferences, you're essentially saying "match what you've seen before." This is incredibly handy when dealing with repetitive structures like HTML tags. Backreferences maintain consistency in your pattern, ensuring that corresponding parts of the text align correctly and adhere to the desired format.
+
+Understanding how to employ backreferences empowers you to create more dynamic and accurate regex patterns, especially in scenarios where you need to match recurring patterns with precision.
 
 ### Non-Capturing Groups
 Learn about non-capturing groups (?:...) and how they provide a way to group elements without capturing them as separate groups, which can be particularly useful when dealing with complex regex patterns.
 
 explain in /^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/ 
 
-### Lookahead and Lookbehind
-Delve into lookahead (?=...) and lookbehind (?<=...) assertions. These constructs allow you to assert whether a certain pattern exists ahead or behind the current position without consuming characters, enabling more sophisticated matching strategies.
+### Put it all together
+> WARNING
+> The answer of our regex code apears below, dont read on until you have had a chance to decode it yourself.
 
 ### Resources 
 
